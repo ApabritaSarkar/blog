@@ -1,40 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Blog Platform
 
-## Getting Started
+A full-stack blog platform built using **Next.js** and **MongoDB Atlas**, with rich text editing, dynamic routing, and admin control — fully deployed on **Vercel**.
 
-First, run the development server:
+---
+
+## 🔗 Live Demo
+
+🌐 [https://blog-sooty-zeta-46.vercel.app](https://blog-sooty-zeta-46.vercel.app)
+
+---
+
+## ✨ Features
+
+- ✅ Create, Edit, Delete blog posts (Admin-only)
+- ✅ Rich text input using React Quill
+- ✅ Dynamic slug-based URLs for SEO
+- ✅ MongoDB Atlas integration via Mongoose
+- ✅ Public blog viewer per post
+- ✅ SEO meta tags on each post page
+- ✅ Fully deployed on Vercel
+
+---
+
+## 🧭 Working URLs
+
+| Feature            | Live URL                                                  |
+|--------------------|-----------------------------------------------------------|
+| 🏠 Homepage         | `/` → [Open](https://blog-sooty-zeta-46.vercel.app/)     |
+| ✍️ Create Post      | `/admin/create` → [Open](https://blog-sooty-zeta-46.vercel.app/admin/create) |
+| 📋 Admin Dashboard  | `/admin` → [Open](https://blog-sooty-zeta-46.vercel.app/admin) |
+| 🔎 View Blog Post   | `/posts/my-first-blog` → [Open](https://blog-sooty-zeta-46.vercel.app/posts/my-first-blog) |
+
+---
+
+## ⚙️ Tech Stack
+
+- **Frontend + Backend**: Next.js (Pages Router)
+- **Database**: MongoDB Atlas (via Mongoose)
+- **Rich Editor**: React Quill
+- **Hosting**: Vercel
+- **Languages**: JavaScript (no TypeScript)
+
+---
+
+## 📁 Folder Structure
+
+pages/
+├── api/posts/ # API Routes (create, edit, delete, get)
+├── admin/ # Admin UI pages
+├── posts/[slug].js # Public post viewer
+├── index.js # Home page with useful links
+models/Post.js # Mongoose schema
+lib/dbConnect.js # MongoDB connection logic
+
+
+---
+
+## 🚀 How to Run Locally
 
 ```bash
+git clone https://github.com/ApabritaSarkar/blog
+cd blog
+npm install
+# Add your Mongo URI in .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+👤 Author
+Built by Apabrita Sarkar as a learning + intern project.
+If you liked this, feel free to ⭐ the repo!

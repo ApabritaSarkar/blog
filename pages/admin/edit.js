@@ -15,7 +15,6 @@ export default function EditPost() {
   const [message, setMessage] = useState('');
 
   const fetchPost = async () => {
-    if (!slug) return;
     const res = await fetch(`/api/posts/${slug}`);
     const data = await res.json();
     if (res.ok) {
@@ -29,15 +28,15 @@ export default function EditPost() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    setMessage('');
     const res = await fetch(`/api/posts/${slug}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content }),
     });
-
     const data = await res.json();
     if (res.ok) {
-      setMessage('✅ Post updated successfully!');
+      setMessage('✅ Post updated!');
       router.push('/admin');
     } else {
       setMessage(`❌ ${data.error}`);
@@ -45,38 +44,45 @@ export default function EditPost() {
   };
 
   useEffect(() => {
-    fetchPost();
+    if (slug) fetchPost();
   }, [slug]);
 
-  if (loading) return <p>Loading post...</p>;
+  if (loading) return <p className="text-center py-12">Loading post...</p>;
 
   return (
-    <div style={{ maxWidth: '700px', margin: 'auto', padding: '2rem' }}>
-      <h1>Edit Post</h1>
-      <form onSubmit={handleUpdate}>
+    <div className="max-w-3xl mx-auto py-12 px-4">
+      <h1 className="text-3xl font-bold mb-6 text-green-700">✏️ Edit Post</h1>
+
+      <form onSubmit={handleUpdate} className="space-y-6">
         <input
           type="text"
-          placeholder="Title"
+          placeholder="Blog title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{ width: '100%', padding: '10px', fontSize: '16px', marginBottom: '1rem' }}
+          className="w-full border border-gray-300 rounded-md p-3 text-lg focus:outline-none focus:ring-2 focus:ring-green-500"
         />
-        <ReactQuill
-          value={content}
-          onChange={setContent}
-          style={{ height: '300px', marginBottom: '1rem' }}
-        />
-        <button type="submit" style={{
-          background: '#0070f3',
-          color: '#fff',
-          padding: '10px 20px',
-          border: 'none',
-          fontSize: '16px',
-          cursor: 'pointer',
-        }}>
+
+        <div className="bg-white rounded-md shadow-md">
+          <ReactQuill
+            theme="snow"
+            value={content}
+            onChange={setContent}
+            className="min-h-[200px]"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium"
+        >
           Update Post
         </button>
-        {message && <p style={{ marginTop: '1rem' }}>{message}</p>}
+
+        {message && (
+          <div className="text-sm mt-2 font-medium text-center text-blue-700">
+            {message}
+          </div>
+        )}
       </form>
     </div>
   );

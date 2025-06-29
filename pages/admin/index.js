@@ -19,7 +19,7 @@ export default function AdminDashboard() {
     });
     if (res.ok) {
       alert('Post deleted');
-      fetchPosts(); // Refresh list
+      fetchPosts();
     }
   };
 
@@ -28,21 +28,41 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div style={{ maxWidth: '800px', margin: 'auto', padding: '2rem' }}>
-      <h1>Admin Dashboard</h1>
-      {loading ? <p>Loading...</p> : (
-        <ul>
-          {posts.map(post => (
-            <li key={post._id} style={{ marginBottom: '1rem' }}>
-              <strong>{post.title}</strong> — <em>{post.slug}</em><br />
-              <Link href={`/posts/${post.slug}`} target="_blank">View</Link> |{' '}
-              <Link href={`/admin/edit?slug=${post.slug}`}>Edit</Link> |{' '}
-              <button onClick={() => handleDelete(post.slug)} style={{ color: 'red', background: 'none', border: 'none', cursor: 'pointer' }}>
-                Delete
-              </button>
-            </li>
+    <div className="max-w-5xl mx-auto px-4 py-12">
+      <h1 className="text-3xl font-bold mb-6 text-green-700">📋 Admin Dashboard</h1>
+
+      {loading ? (
+        <p className="text-gray-600">Loading posts...</p>
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2">
+          {posts.map((post) => (
+            <div key={post._id} className="bg-white border border-gray-200 rounded-lg shadow-md p-5">
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">{post.title}</h2>
+              <p className="text-sm text-gray-500 mb-4">{post.slug}</p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href={`/posts/${post.slug}`}
+                  target="_blank"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
+                >
+                  View
+                </Link>
+                <Link
+                  href={`/admin/edit?slug=${post.slug}`}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md text-sm"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => handleDelete(post.slug)}
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

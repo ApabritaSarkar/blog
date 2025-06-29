@@ -1,19 +1,17 @@
 export default function HomePage() {
   return (
-    <div style={{ maxWidth: '700px', margin: 'auto', padding: '3rem' }}>
-      <h1>🌿 Welcome to Blog</h1>
-      <p>This is a full-stack blog platform built with Next.js and MongoDB.</p>
+    <div className="max-w-3xl mx-auto py-16 px-4 text-center">
+      <h1 className="text-4xl font-bold mb-4 text-green-600">🌿 Welcome to GreenVerse Blog</h1>
+      <p className="text-gray-600 mb-8">A full-stack blog built with Next.js + MongoDB.</p>
 
-      <h2 style={{ marginTop: '2rem' }}>🔗 Useful Links</h2>
-      <ul style={{ lineHeight: '2' }}>
-        <li><strong>Admin Dashboard:</strong> <a href="/admin" target="_blank">/admin</a></li>
-        <li><strong>Create Blog Post:</strong> <a href="/admin/create" target="_blank">/admin/create</a></li>
-        <li><strong>Public Blog Example:</strong> <a href="/posts/my-first-blog" target="_blank">/posts/my-first-blog</a></li>
-      </ul>
-
-      <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
-        Tip: You can add new posts, edit or delete them from the admin dashboard.
-      </p>
+      <div className="text-left">
+        <h2 className="text-xl font-semibold mb-2">🔗 Useful Links</h2>
+        <ul className="list-disc list-inside space-y-2 text-blue-600">
+          <li><a href="/admin" target="_blank">Admin Dashboard</a></li>
+          <li><a href="/admin/create" target="_blank">Create Blog Post</a></li>
+          <li><a href="/posts/my-first-blog" target="_blank">Example Blog Post</a></li>
+        </ul>
+      </div>
     </div>
   );
 }
